@@ -17,17 +17,24 @@ app.use("/public",express.static(assetPath)) */
 
 let absPath = __dirname + "/json";
 
-function handler (req,res) {
-	if(process.env.MESSAGE_STYLE == "uppercase") {
+function handler2 (req,res, next) {
+	console.log(req.method + " " + req.path + " - " + req.ip);
+	next();
+}
+
+function handler1 (req,res) {
+	/*if(process.env.MESSAGE_STYLE == "uppercase") {
 		res.json({"message" : "HELLO JSON"});
 	}
 	else {
-		res.json({"message" : "Hello json"})
-	}
+		res.json({"message" : "Hello json"});
+	}*/
+	res.json({"message": "Hello json"});
+	
 	
 }
-
-app.get("/json",handler)
+app.use(handler2);
+app.get("/json",handler1);
 
 
 
