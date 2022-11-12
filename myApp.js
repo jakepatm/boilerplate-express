@@ -5,13 +5,15 @@ let express = require('express');
 let app = express();
 
 let absPath = __dirname + "/views/index.html"
+let assetPath = __dirname + "/public"
 
-function x (req,res) {
+function handler (req,res) {
 	//res.send("Hello Express");
 	res.sendFile(absPath)
 }
 
-app.get("/", x);
+app.get("/", handler);
+app.use("/public",express.static(assetPath))
 
 
 
