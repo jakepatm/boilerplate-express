@@ -4,7 +4,7 @@
 let express = require('express');
 let app = express();
 
-let absPath = __dirname + "/views/index.html"
+/*let absPath = __dirname + "/views/index.html"
 let assetPath = __dirname + "/public"
 
 function handler (req,res) {
@@ -13,7 +13,15 @@ function handler (req,res) {
 }
 
 app.get("/", handler);
-app.use("/public",express.static(assetPath))
+app.use("/public",express.static(assetPath)) */
+
+let absPath = __dirname + "/json";
+
+function handler (req,res) {
+	res.json({"message" : "Hello json"})
+}
+
+app.get("/json",handler)
 
 
 
