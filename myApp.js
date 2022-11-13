@@ -4,7 +4,16 @@ require('dotenv').config();
 let express = require('express');
 let app = express();
 
-/*let absPath = __dirname + "/views/index.html"
+app.get('/:word/echo',function (req,res) {
+	res.json({"echo" : req.params.word});
+})
+
+
+
+/* LESSON BEFORE Route Parameters
+
+
+let absPath = __dirname + "/views/index.html"
 let assetPath = __dirname + "/public"
 
 function handler (req,res) {
@@ -15,7 +24,7 @@ function handler (req,res) {
 app.get("/", handler);
 app.use("/public",express.static(assetPath)) */
 
-let absPath = __dirname + "/json";
+/*let absPath = __dirname + "/json";
 
 function handler2 (req,res, next) {
 	console.log(req.method + " " + req.path + " - " + req.ip);
@@ -28,16 +37,19 @@ function handler1 (req,res,next) {
 	}
 	else {
 		res.json({"message" : "Hello json"});
-	}*/
+	}
 	let nowDate = new Date().toString();
-	req.rodger = nowDate;
+	req.time = nowDate;
 	next();
 	
 }
 app.use(handler2);
 app.get("/now",handler1, function(req,res) {
-	res.json({"time": req.rodger})
-});
+	res.json({"time": req.time})
+});*/
+
+
+
 
 
 
