@@ -4,10 +4,25 @@ require('dotenv').config();
 let express = require('express');
 let app = express();
 
+/*
+
+Query Parameters
+
+*/
+
+app.get("/name", function (req,res) {
+	res.json({"name" : req.query.first + " " + req.query.last})
+})
+
+
+/*
+
+ROUTE PARAMETERS
+
 app.get('/:word/echo',function (req,res) {
 	res.json({"echo" : req.params.word});
 })
-
+*/
 
 
 /* LESSON BEFORE Route Parameters
