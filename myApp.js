@@ -22,19 +22,22 @@ function handler2 (req,res, next) {
 	next();
 }
 
-function handler1 (req,res) {
+function handler1 (req,res,next) {
 	/*if(process.env.MESSAGE_STYLE == "uppercase") {
 		res.json({"message" : "HELLO JSON"});
 	}
 	else {
 		res.json({"message" : "Hello json"});
 	}*/
-	res.json({"message": "Hello json"});
-	
+	let nowDate = new Date().toString();
+	req.rodger = nowDate;
+	next();
 	
 }
 app.use(handler2);
-app.get("/json",handler1);
+app.get("/now",handler1, function(req,res) {
+	res.json({"time": req.rodger})
+});
 
 
 
