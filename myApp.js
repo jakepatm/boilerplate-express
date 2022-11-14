@@ -4,15 +4,31 @@ require('dotenv').config();
 let express = require('express');
 let app = express();
 
+let bodyParser = require('body-parser');
+
+
+
+
+/* Body Parser */
+
+
+app.use(bodyParser.urlencoded({extended : false}));
+app.use(bodyParser.json());
+
+app.post('/name', function (req,res) {
+	res.json({"name" : req.body.first + " " + req.body.last})
+});
+
+
 /*
 
 Query Parameters
 
-*/
-
 app.get("/name", function (req,res) {
 	res.json({"name" : req.query.first + " " + req.query.last})
 })
+
+*/
 
 
 /*
@@ -62,43 +78,5 @@ app.use(handler2);
 app.get("/now",handler1, function(req,res) {
 	res.json({"time": req.time})
 });*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
  module.exports = app;
